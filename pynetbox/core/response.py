@@ -417,7 +417,7 @@ class Record:
                     # Permissions constraints can be either dict or list
                     to_cache = copy.deepcopy(v)
                 else:
-                    v = [list_parser(k, i) for i in v]
+                    v = [list_parser(k, i) for i in v if "_json_field" not in i else generic_list_parser(k, i)]
                     to_cache = list(v)
                 self._add_cache((k, to_cache))
 
